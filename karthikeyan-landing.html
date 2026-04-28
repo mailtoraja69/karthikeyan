@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karthikeyan A | Automotive Calibration Engineer & Consultant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:      #080808;
+      --bg2:     #0f0f0f;
+      --bg3:     #161616;
+      --bg4:     #1c1c1c;
+      --red:     #B8892A;
+      --red2:    #8E6818;
+      --white:   #FFFFFF;
+      --gray:    #999999;
+      --gray2:   #444444;
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── Grain Overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    /* ════════════════════════════════
+       NAV
+    ════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 500;
+      padding: 22px 64px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.4s, padding 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.96);
+      backdrop-filter: blur(12px);
+      padding: 14px 64px;
+      border-bottom-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 22px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+    }
+    .nav-logo em { color: var(--red); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500; font-size: 13px; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gray); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-book {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 10px 24px !important;
+      letter-spacing: 2px !important;
+      transition: background 0.2s !important;
+    }
+    .nav-book:hover { background: var(--red2) !important; }
+
+    /* ════════════════════════════════
+       HERO
+    ════════════════════════════════ */
+    .hero {
+      position: relative; height: 100vh; min-height: 680px;
+      overflow: hidden;
+      display: flex; align-items: flex-end;
+      padding: 0 64px 90px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('hero-karthikeyan.jpg') center 20% / cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 9s cubic-bezier(0.25,0.1,0.25,1) forwards;
+    }
+    @keyframes heroZoom { to { transform: scale(1.0); } }
+
+    .hero-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(8,8,8,0.94) 0%,
+        rgba(8,8,8,0.80) 38%,
+        rgba(8,8,8,0.38) 62%,
+        rgba(8,8,8,0.60) 100%
+      );
+    }
+    .hero-grad-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+
+    /* Vertical red bar */
+    .hero-bar {
+      position: absolute; left: 64px; top: 50%; transform: translateY(-50%);
+      width: 3px; height: 0; background: var(--red);
+      animation: barGrow 0.9s 0.4s cubic-bezier(0.77,0,0.18,1) forwards;
+    }
+    @keyframes barGrow { to { height: 200px; } }
+
+    .hero-content { position: relative; z-index: 2; padding-left: 28px; max-width: 900px; }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+      opacity: 0; animation: fadeUp 0.6s 0.55s ease forwards;
+    }
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(88px, 14vw, 168px);
+      line-height: 0.88; letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 .l1 {
+      display: block; color: var(--white);
+      opacity: 0; transform: translateY(44px);
+      animation: fadeUp 0.7s 0.65s ease forwards;
+    }
+    .hero-h1 .l2 {
+      display: block; color: var(--red);
+      opacity: 0; transform: translateY(44px);
+      animation: fadeUp 0.7s 0.82s ease forwards;
+    }
+    .hero-sub {
+      font-size: 16px; font-weight: 300;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.5px;
+      max-width: 400px; line-height: 1.65; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.6s 1s ease forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; align-items: center;
+      opacity: 0; animation: fadeUp 0.6s 1.15s ease forwards;
+    }
+
+    /* Social strip */
+    .hero-side {
+      position: absolute; right: 52px; bottom: 90px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 18px;
+      opacity: 0; animation: fadeIn 0.8s 1.5s ease forwards;
+    }
+    .hero-side::before {
+      content: ''; width: 1px; height: 54px; background: var(--gray2);
+    }
+    .hero-side a {
+      color: var(--gray); text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      writing-mode: vertical-rl; transition: color 0.2s;
+    }
+    .hero-side a:hover { color: var(--white); }
+
+    /* ════════════════════════════════
+       BUTTONS
+    ════════════════════════════════ */
+    .btn-red {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--red); color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-red:hover { background: var(--red2); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,0.28); color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+    /* ════════════════════════════════
+       STATS STRIP
+    ════════════════════════════════ */
+    .stats {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(184,137,42,0.35);
+      border-bottom: 1px solid rgba(184,137,42,0.35);
+      padding: 30px 64px;
+      display: flex; justify-content: space-around; align-items: center;
+    }
+    .stat { text-align: center; }
+    .stat-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 54px; line-height: 1; color: var(--red);
+    }
+    .stat-l {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 3px;
+    }
+    .stat-div { width: 1px; height: 52px; background: rgba(255,255,255,0.08); }
+
+    /* ════════════════════════════════
+       SHARED SECTION STYLES
+    ════════════════════════════════ */
+    .sec { padding: 100px 64px; }
+    .sec-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+    }
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(46px, 6.5vw, 82px); line-height: 0.95;
+      color: var(--white); margin-bottom: 22px;
+    }
+    .sec-body {
+      font-size: 15px; font-weight: 300; line-height: 1.78;
+      color: rgba(255,255,255,0.58); max-width: 520px;
+    }
+
+    /* ════════════════════════════════
+       ABOUT
+    ════════════════════════════════ */
+    .about {
+      background: var(--bg2);
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 90px; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-corner {
+      position: absolute; width: 56px; height: 56px;
+      border-color: var(--red); border-style: solid;
+    }
+    .about-img-corner.tl { top: -12px; left: -12px; border-width: 3px 0 0 3px; }
+    .about-img-corner.br { bottom: -12px; right: -12px; border-width: 0 3px 3px 0; }
+    .about-img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      display: block; filter: contrast(1.05);
+    }
+    .about-ph {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--bg3);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      border: 1px dashed var(--gray2);
+    }
+    .about-ph .ph-icon { font-size: 40px; opacity: 0.3; }
+    .about-ph .ph-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray2);
+    }
+    .about-ph .ph-hint {
+      font-size: 11px; letter-spacing: 1px; color: var(--gray2); opacity: 0.6;
+    }
+    .about-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--white); margin-bottom: 28px;
+    }
+    .about-badge span { color: var(--red); }
+
+    /* ════════════════════════════════
+       EXPERTISE
+    ════════════════════════════════ */
+    .expertise { background: var(--bg); }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 64px;
+    }
+    .exp-header-note {
+      max-width: 260px; font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.35); line-height: 1.6; text-align: right;
+    }
+    .exp-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .ecard {
+      background: var(--bg3); padding: 42px 30px;
+      border-top: 3px solid transparent; position: relative;
+      overflow: hidden; transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+    .ecard:hover { border-top-color: var(--red); background: var(--bg4); transform: translateY(-5px); }
+    .ecard-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 66px; line-height: 1;
+      color: rgba(255,255,255,0.04); position: absolute; top: 16px; right: 20px;
+    }
+    .ecard-icon { font-size: 28px; margin-bottom: 22px; display: block; }
+    .ecard-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 20px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .ecard-desc {
+      font-size: 13px; font-weight: 300; line-height: 1.65;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ════════════════════════════════
+       EXPERIENCE
+    ════════════════════════════════ */
+    .timeline-sec { background: var(--bg2); }
+    .timeline-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 90px; margin-top: 64px;
+    }
+    .tl { border-left: 2px solid var(--border); padding-left: 36px; }
+    .tl-item { position: relative; padding-bottom: 44px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -45px; top: 7px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg2); border: 2px solid var(--gray2);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .tl-item:hover .tl-dot { border-color: var(--red); background: var(--red); }
+    .tl-period {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
+      font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 5px;
+    }
+    .tl-role {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 20px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
+      color: var(--white); margin-bottom: 3px;
+    }
+    .tl-co {
+      font-size: 13px; font-weight: 400; color: var(--gray); margin-bottom: 10px;
+    }
+    .tl-desc { font-size: 13px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.38); }
+
+    .edu-col {}
+    .edu-item {
+      padding: 26px 30px; background: var(--bg3); margin-bottom: 2px;
+      border-left: 3px solid transparent; transition: border-color 0.3s;
+    }
+    .edu-item:hover { border-left-color: var(--red); }
+    .edu-deg {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 18px;
+      font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px;
+    }
+    .edu-school { font-size: 13px; color: var(--gray); }
+    .edu-year {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-top: 7px;
+    }
+    .rec-item {
+      padding: 26px 30px; background: var(--bg3);
+      border-left: 3px solid var(--red);
+      margin-top: 24px;
+    }
+
+    /* ════════════════════════════════
+       PARVATH SPLIT
+    ════════════════════════════════ */
+    .parvath-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 520px;
+    }
+    .pv-left {
+      background: #0d0d0d;
+      border-left: 3px solid var(--red);
+      padding: 90px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .pv-left .sec-label { color: var(--red); }
+    .pv-left .sec-body { color: rgba(255,255,255,0.6); max-width: 100%; }
+    .pv-logo-box {
+      background: #FFFFFF;
+      display: inline-flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 5px;
+      padding: 10px 20px; margin-bottom: 32px;
+      width: auto; max-width: 190px; height: 72px;
+      align-self: flex-start;
+    }
+    .pv-logo-img { max-height: 46px; max-width: 150px; object-fit: contain; display: block; }
+    .pv-logo-fname {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 8px;
+      letter-spacing: 1.5px; text-transform: uppercase; color: #999;
+    }
+    .pv-link {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 38px;
+      background: var(--red); color: var(--white); padding: 14px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      text-decoration: none; width: fit-content; transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .pv-link:hover { background: var(--red2); }
+    .pv-right {
+      background: var(--bg3); padding: 90px 64px;
+      display: flex; flex-direction: column; justify-content: center; gap: 0;
+    }
+    .svc-row {
+      display: flex; gap: 22px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid var(--border);
+    }
+    .svc-row:first-child { padding-top: 0; }
+    .svc-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .svc-n {
+      font-family: 'Bebas Neue', sans-serif; font-size: 30px;
+      color: var(--red); line-height: 1; min-width: 36px;
+    }
+    .svc-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 17px;
+      font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 4px;
+    }
+    .svc-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.55; }
+
+    /* ════════════════════════════════
+       ACHIEVEMENTS
+    ════════════════════════════════ */
+    .ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .ach-card {
+      background: var(--bg3); padding: 64px;
+      position: relative; overflow: hidden;
+    }
+    .ach-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px; background: var(--red);
+    }
+    .ach-watermark {
+      position: absolute; bottom: -20px; right: -10px;
+      font-family: 'Bebas Neue', sans-serif; font-size: 120px;
+      color: rgba(255,255,255,0.02); pointer-events: none; line-height: 1;
+    }
+    .ach-icon { font-size: 36px; margin-bottom: 22px; display: block; }
+    .ach-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 38px;
+      color: var(--white); margin-bottom: 14px; line-height: 1;
+    }
+    .ach-desc {
+      font-size: 14px; font-weight: 300; line-height: 1.72;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ════════════════════════════════
+       HERO BG PLACEHOLDER
+    ════════════════════════════════ */
+    .hero-bg-ph {
+      position: absolute; inset: 0; z-index: 0;
+      background: #0c0c0c;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      pointer-events: none;
+    }
+    .hero-bg-ph .ph-file {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px;
+      font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.12);
+      border: 1px dashed rgba(255,255,255,0.08); padding: 10px 22px;
+    }
+    .hero-bg-ph .ph-hint {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.06);
+    }
+    /* Parvath logo white box - handled in parvath split section */
+    /* Client logo white boxes */
+    .cli-box {
+      background: #FFFFFF; width: 180px; height: 80px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; padding: 12px 16px; flex-shrink: 0;
+    }
+    .cli-box img {
+      max-height: 46px; max-width: 150px; width: auto; object-fit: contain; display: block;
+    }
+    .cli-box .cli-fname {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa;
+      text-align: center;
+    }
+    .clients { background: var(--bg2); padding: 64px; }
+    .clients-lbl {
+      text-align: center; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 800; letter-spacing: 4px;
+      text-transform: uppercase; color: #FFFFFF; margin-bottom: 48px;
+    }
+    .clients-row {
+      display: flex; justify-content: center;
+      align-items: center; gap: 64px; flex-wrap: wrap;
+    }
+    .cli-logo {
+      height: 44px; width: auto; object-fit: contain;
+      filter: grayscale(100%) brightness(2) opacity(0.35);
+      transition: filter 0.35s;
+    }
+    .cli-logo:hover { filter: grayscale(0%) brightness(1) opacity(1); }
+
+    /* ════════════════════════════════
+       TESTIMONIALS
+    ════════════════════════════════ */
+    .testi { background: var(--bg); }
+    .testi-head { text-align: center; margin-bottom: 64px; }
+    .testi-head .sec-label { display: block; text-align: center; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .tcard {
+      background: var(--bg3); padding: 44px 36px;
+    }
+    .tcard-q {
+      font-family: 'Bebas Neue', sans-serif; font-size: 88px; line-height: 0.7;
+      color: var(--red); opacity: 0.55; margin-bottom: 22px;
+    }
+    .tcard-text {
+      font-size: 14px; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.65); font-style: italic; margin-bottom: 28px;
+    }
+    .tcard-author { display: flex; align-items: center; gap: 14px; }
+    .tcard-av {
+      width: 42px; height: 42px; background: var(--red); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: 18px; color: var(--white);
+    }
+    .tcard-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 16px;
+      font-weight: 700; text-transform: uppercase; color: var(--white);
+    }
+    .tcard-role { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* ════════════════════════════════
+       CTA
+    ════════════════════════════════ */
+    .cta-sec {
+      background: var(--bg); padding: 130px 64px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-bg-word {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: 28vw;
+      color: rgba(255,255,255,0.018); white-space: nowrap; pointer-events: none;
+    }
+    .cta-sec .sec-label { display: block; text-align: center; }
+    .cta-sec .sec-title { max-width: 660px; margin: 0 auto 20px; text-align: center; }
+    .cta-sec .sec-body { max-width: 440px; margin: 0 auto; text-align: center; }
+    .cta-btns { display: flex; justify-content: center; gap: 20px; margin-top: 52px; }
+    .cta-contacts {
+      display: flex; justify-content: center; gap: 52px;
+      margin-top: 60px; padding-top: 52px;
+      border-top: 1px solid var(--border);
+    }
+    .cta-contact { display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; }
+    .cc-box {
+      width: 50px; height: 50px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; transition: border-color 0.2s, background 0.2s;
+    }
+    .cta-contact:hover .cc-box { border-color: var(--red); background: rgba(200,39,42,0.12); }
+    .cc-lbl {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray); text-align: center; max-width: 160px;
+    }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    footer {
+      background: #040404; padding: 30px 64px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .ft-l {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px;
+      letter-spacing: 1px; color: var(--gray2);
+    }
+    .ft-r {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray2); text-decoration: none; transition: color 0.2s;
+    }
+    .ft-r:hover { color: var(--red); }
+
+    /* ════════════════════════════════
+       SCROLL REVEAL
+    ════════════════════════════════ */
+    @keyframes fadeUp  { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    .stagger > * {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .stagger.vis > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .stagger.vis > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
+    .stagger.vis > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
+    .stagger.vis > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 1100px) {
+      nav, nav.scrolled { padding-left: 32px; padding-right: 32px; }
+      .sec, .hero { padding-left: 32px; padding-right: 32px; }
+      .stats { padding: 28px 32px; }
+      .about { grid-template-columns: 1fr; gap: 44px; padding: 70px 32px; }
+      .exp-cards { grid-template-columns: 1fr 1fr; }
+      .timeline-grid { grid-template-columns: 1fr; gap: 48px; }
+      .parvath-split { grid-template-columns: 1fr; }
+      .pv-left, .pv-right { padding: 72px 32px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .cta-sec { padding: 90px 32px; }
+      footer { padding: 28px 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      /* Hide the vertical bar that overlaps text on mobile */
+      .hero-bar { display: none; }
+      /* Remove the padding-left offset that relied on the bar */
+      .hero-content { padding-left: 0; }
+      .hero { padding: 0 24px 70px; }
+      .hero-h1 { font-size: clamp(72px, 18vw, 110px); }
+      .exp-cards { grid-template-columns: 1fr; }
+      .ach-grid { grid-template-columns: 1fr; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-contacts { flex-direction: column; align-items: center; gap: 28px; }
+      .hero-side { display: none; }
+      .stat-div { display: none; }
+      .stats { flex-wrap: wrap; gap: 28px; padding: 28px 24px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+      .clients-row { gap: 20px; }
+      .cli-box { width: 140px; height: 66px; }
+      .pv-left, .pv-right { padding: 56px 24px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .timeline-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+      .about { padding: 60px 24px; gap: 36px; }
+      .sec { padding: 70px 24px; }
+      .exp-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .exp-header-note { text-align: left; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">K<em>.</em>A</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#parvath">Parvath Solutions</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://calendly.com/mailtoraja69/30min" target="_blank" class="nav-book">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════
+     Image file needed: hero-karthikeyan.jpg
+     Recommended: High-res, professional photo, ideally in lab/engine environment
+     or clean corporate shot against dark background.
+     Portrait orientation works best.
+-->
+<section class="hero" id="home">
+  <!-- Background: replace hero-karthikeyan.jpg with your full-width hero photo -->
+  <div class="hero-bg-ph">
+    <span class="ph-file">hero-karthikeyan.jpg</span>
+    <span class="ph-hint">Full-width hero photo goes here &mdash; landscape, dark or high-contrast</span>
+  </div>
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-grad-bottom"></div>
+  <div class="hero-bar"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Automotive Calibration Engineer &nbsp;&bull;&nbsp; Consultant &nbsp;&bull;&nbsp; Founder, Parvath Solutions</p>
+    <h1 class="hero-h1">
+      <span class="l1">BUILT TO</span>
+      <span class="l2">PERFORM</span>
+    </h1>
+    <p class="hero-sub">Where precision meets purpose. Engineering solutions that move the world forward.</p>
+    <div class="hero-btns">
+      <a href="https://calendly.com/mailtoraja69/30min" target="_blank" class="btn-red">Book a Consultation &#8594;</a>
+      <a href="https://www.linkedin.com/in/karthikeyana-01a326128" target="_blank" class="btn-ghost">Connect on LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <a href="https://www.linkedin.com/in/karthikeyana-01a326128" target="_blank">LinkedIn</a>
+    <a href="mailto:karthi3seng@gmail.com">Email</a>
+  </div>
+</section>
+
+<!-- ══ STATS ══════════════════════════════════ -->
+<div class="stats reveal">
+  <div class="stat">
+    <div class="stat-n" data-target="7" data-suffix="+">0</div>
+    <div class="stat-l">Years of Expertise</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-n" data-target="1">0</div>
+    <div class="stat-l">Patent Granted</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-n" data-target="4">0</div>
+    <div class="stat-l">Elite Institutions</div>
+  </div>
+  <div class="stat-div"></div>
+  <div class="stat">
+    <div class="stat-n" data-target="50" data-suffix="+">0</div>
+    <div class="stat-l">Projects Delivered</div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══════════════════════════════════
+     Image file needed: about-karthikeyan.jpg
+     Recommended: Clean portrait, corporate/professional look,
+     or candid in a lab/workshop setting. 3:4 ratio works best.
+-->
+<section class="about sec" id="about">
+  <div class="about-img-wrap reveal">
+    <div class="about-img-corner tl"></div>
+    <div class="about-img-corner br"></div>
+    <div class="about-ph">
+      <span class="ph-icon">&#128247;</span>
+      <span class="ph-name">about-karthikeyan.jpg</span>
+      <span class="ph-hint">3:4 ratio &mdash; professional portrait or lab setting</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="sec-label">Who I Am</p>
+    <h2 class="sec-title">KARTHIKEYAN A</h2>
+    <p class="about-badge">Calibration Engineer &nbsp;<span>&#47;</span>&nbsp; Inventor &nbsp;<span>&#47;</span>&nbsp; Founder</p>
+    <p class="sec-body" style="margin-bottom:18px;">
+      I am an automotive calibration engineer with over seven years of focused experience in engine management systems, emission calibration, and chassis dynamometer testing. My work sits at the intersection of hardware, firmware, and real-world engine performance.
+    </p>
+    <p class="sec-body" style="margin-bottom:18px;">
+      From the research labs at IIT Madras to production-grade calibration at VEMBSYS Technovation and Force Motors, every chapter of my career has been driven by a single goal: understanding what makes an engine perform to its absolute best.
+    </p>
+    <p class="sec-body">
+      I founded Parvath Solutions to bring that same level of precision to a wider range of R&amp;D teams, startups, and institutions, offering not just solutions, but insight built from years of hands-on experience.
+    </p>
+    <div style="margin-top:36px; display:flex; gap:16px;">
+      <a href="https://calendly.com/mailtoraja69/30min" target="_blank" class="btn-red">Schedule a Call &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERTISE ══════════════════════════════ -->
+<section class="expertise sec" id="expertise">
+  <div class="exp-header">
+    <div>
+      <p class="sec-label">Core Expertise</p>
+      <h2 class="sec-title">WHAT I BRING<br>TO THE TABLE</h2>
+    </div>
+    <p class="exp-header-note">Specialised knowledge built across research labs, OEMs, and independent R&amp;D over seven years.</p>
+  </div>
+  <div class="exp-cards stagger">
+    <div class="ecard">
+      <span class="ecard-num">01</span>
+      <span class="ecard-icon">&#9881;&#65039;</span>
+      <h3 class="ecard-title">Engine Calibration</h3>
+      <p class="ecard-desc">Full-cycle engine and chassis dynamometer calibration focused on performance, efficiency, and real-world driveability across multiple engine families.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">02</span>
+      <span class="ecard-icon">&#128300;</span>
+      <h3 class="ecard-title">Engine Management Systems</h3>
+      <p class="ecard-desc">Development of EMS for 2-wheelers, 3-wheelers, GDI engines, Wankel engines, and Gensets with custom spark, injection, and fuel strategies.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">03</span>
+      <span class="ecard-icon">&#128225;</span>
+      <h3 class="ecard-title">Emission Calibration</h3>
+      <p class="ecard-desc">Emission-compliant calibration aligned to regulatory standards, combining sensor analysis, OBD systems design, and advanced diagnostics development.</p>
+    </div>
+    <div class="ecard">
+      <span class="ecard-num">04</span>
+      <span class="ecard-icon">&#128187;</span>
+      <h3 class="ecard-title">Open ECU &amp; HIL Testing</h3>
+      <p class="ecard-desc">PCB hardware design, embedded firmware, and custom HIL test bench development for proof-of-concept validation and model-based control systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══════════════════════════════ -->
+<section class="timeline-sec sec" id="experience">
+  <p class="sec-label">Professional Journey</p>
+  <h2 class="sec-title">EXPERIENCE &amp;<br>EDUCATION</h2>
+  <div class="timeline-grid">
+    <div class="tl reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">2021 &mdash; Present</p>
+        <h3 class="tl-role">Founder &amp; Consultant</h3>
+        <p class="tl-co">Parvath Solutions &mdash; Tamil Nadu, India</p>
+        <p class="tl-desc">Built and leads a specialised R&amp;D technology firm serving research institutions, OEMs, and engineering startups with custom engine control systems, HIL test benches, and technical consultation programs.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Mar 2021 &mdash; Sep 2021</p>
+        <h3 class="tl-role">Junior Engineering Manager II</h3>
+        <p class="tl-co">Force Motors Ltd &mdash; Pune, India</p>
+        <p class="tl-desc">Supported vehicle engineering and calibration processes at one of India's most established commercial vehicle manufacturers, working across cross-functional OEM engineering teams.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Apr 2018 &mdash; Feb 2021</p>
+        <h3 class="tl-role">Senior Calibration Engineer</h3>
+        <p class="tl-co">VEMBSYS Technovation Pvt. Ltd &mdash; Gurgaon, India</p>
+        <p class="tl-desc">Nearly three years of hands-on calibration engineering spanning engine management systems, emission standards compliance, and dynamometer-based validation across multiple engine platforms and vehicle segments.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Sep 2017 &mdash; Dec 2017</p>
+        <h3 class="tl-role">Project Associate</h3>
+        <p class="tl-co">Indian Institute of Technology, Madras</p>
+        <p class="tl-desc">Contributed to cutting-edge automotive research at one of India's premier engineering institutions, working alongside leading faculty in powertrain technology and engine systems research.</p>
+      </div>
+    </div>
+    <div class="edu-col reveal">
+      <p class="sec-label" style="margin-bottom:22px;">Education</p>
+      <div class="edu-item">
+        <p class="edu-deg">Bachelor of Engineering &mdash; Mechanical</p>
+        <p class="edu-school">Coimbatore Institute of Engineering and Technology</p>
+        <p class="edu-year">2013 &mdash; 2017</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-deg">Higher Secondary Certificate</p>
+        <p class="edu-school">St. Mary's Higher Secondary School</p>
+        <p class="edu-year">2011 &mdash; 2013</p>
+      </div>
+
+      <p class="sec-label" style="margin-top:40px; margin-bottom:16px;">Recognition</p>
+      <div class="rec-item">
+        <p class="edu-deg">&#127942;&nbsp; Young Scientist Award</p>
+        <p class="edu-school" style="margin-top:8px; font-size:13px; color:rgba(255,255,255,0.5);">Awarded in recognition of outstanding contributions to engineering research and scientific innovation at an early stage of career.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARVATH ══════════════════════════════════ -->
+<div class="parvath-split" id="parvath">
+  <div class="pv-left reveal">
+    <!-- Parvath logo: place parvath-logo.png (white or transparent bg) in same folder -->
+    <div class="pv-logo-box">
+      <img src="parvath-logo.png" alt="Parvath Solutions" class="pv-logo-img" onerror="this.style.display='none'" />
+      <span class="pv-logo-fname">parvath-logo.png</span>
+    </div>
+    <p class="sec-label">My Company</p>
+    <h2 class="sec-title" style="font-size:clamp(44px,5vw,68px);">PARVATH<br>SOLUTIONS</h2>
+    <p class="sec-body">
+      A specialised R&amp;D technology firm dedicated to developing advanced engine control systems with solutions that are accessible, precise, and built to push the boundaries of what is engineerable.
+    </p>
+    <p class="sec-body" style="margin-top:16px;">
+      Serving IIT Madras, CSIR-NAL, Anna University, CIET, and more with custom ECUs, EMS platforms, HIL testing solutions, and professional training programs.
+    </p>
+    <a href="https://parvathsolutions.com/" target="_blank" class="pv-link">Explore Parvath Solutions &#8594;</a>
+  </div>
+  <div class="pv-right reveal">
+    <div class="svc-row">
+      <span class="svc-n">01</span>
+      <div>
+        <p class="svc-name">Open ECU Development</p>
+        <p class="svc-desc">PCB hardware, firmware, and application development with custom wiring harness solutions for any engine platform.</p>
+      </div>
+    </div>
+    <div class="svc-row">
+      <span class="svc-n">02</span>
+      <div>
+        <p class="svc-name">Engine Management System Dev</p>
+        <p class="svc-desc">EMS for 2-wheelers, 3-wheelers, Gensets, Wankel engines, GDI systems, and dual/flexi fuel platforms.</p>
+      </div>
+    </div>
+    <div class="svc-row">
+      <span class="svc-n">03</span>
+      <div>
+        <p class="svc-name">HIL Test Bench Design</p>
+        <p class="svc-desc">Real-time validation and proof-of-concept test benches tailored to specific project requirements and constraints.</p>
+      </div>
+    </div>
+    <div class="svc-row">
+      <span class="svc-n">04</span>
+      <div>
+        <p class="svc-name">Consultation &amp; Training</p>
+        <p class="svc-desc">Engine calibration mastery, OBD development, HIL implementation, and model-based development in MATLAB.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACHIEVEMENTS ══════════════════════════════ -->
+<div class="ach-grid">
+  <div class="ach-card reveal">
+    <div class="ach-watermark">AWARD</div>
+    <span class="ach-icon">&#127942;</span>
+    <h3 class="ach-title">YOUNG SCIENTIST AWARD</h3>
+    <p class="ach-desc">
+      Recognised with the Young Scientist Award for exceptional research contributions and pioneering work in the field of automotive engineering. A milestone that reflects a longstanding commitment to pushing the boundaries of what is technically possible in engine science.
+    </p>
+  </div>
+  <div class="ach-card reveal">
+    <div class="ach-watermark">PATENT</div>
+    <span class="ach-icon">&#128221;</span>
+    <h3 class="ach-title">PATENT: THREE STROKE ICE</h3>
+    <p class="ach-desc">
+      Holder of a granted patent for the Three Stroke Internal Combustion Engine, an inventive approach to engine thermodynamics that challenges conventional ICE design. A testament to original, first-principles thinking and a deep understanding of combustion science.
+    </p>
+  </div>
+</div>
+
+<!-- ══ CLIENTS ══════════════════════════════════ -->
+<div class="clients reveal">
+  <p class="clients-lbl">Trusted by Leading Institutions</p>
+  <div class="clients-row">
+    <!-- Drop your logo PNGs (white background or transparent) in the same folder as the HTML -->
+    <div class="cli-box">
+      <img src="iit-madras-logo.png" alt="IIT Madras" onerror="this.style.display='none'" />
+      <span class="cli-fname">iit-madras-logo.png</span>
+    </div>
+    <div class="cli-box">
+      <img src="csir-nal-logo.png" alt="CSIR-NAL" onerror="this.style.display='none'" />
+      <span class="cli-fname">csir-nal-logo.png</span>
+    </div>
+    <div class="cli-box">
+      <img src="anna-university-logo.png" alt="Anna University" onerror="this.style.display='none'" />
+      <span class="cli-fname">anna-university-logo.png</span>
+    </div>
+    <div class="cli-box">
+      <img src="ciet-logo.png" alt="CIET" onerror="this.style.display='none'" />
+      <span class="cli-fname">ciet-logo.png</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TESTIMONIALS ══════════════════════════════ -->
+<section class="testi sec" id="testimonials">
+  <div class="testi-head">
+    <p class="sec-label">What Others Say</p>
+    <h2 class="sec-title">PEOPLE WHO TRUST<br>THE WORK</h2>
+  </div>
+  <div class="testi-grid stagger">
+    <div class="tcard">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">Working with Karthikeyan on our engine management research gave us a new perspective on calibration precision. His depth of technical knowledge and methodical approach set a clear benchmark for the work we do at the department.</p>
+      <div class="tcard-author">
+        <div class="tcard-av">S</div>
+        <div>
+          <p class="tcard-name">Seenivasan</p>
+          <p class="tcard-role">Head of Department, Mechanical Engineering, CIET</p>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">Karthikeyan's contribution to our research was exceptional. He brings both technical rigor and creative problem-solving to every challenge. Rarely do you find that combination at such a level in someone this focused on the domain.</p>
+      <div class="tcard-author">
+        <div class="tcard-av">R</div>
+        <div>
+          <p class="tcard-name">Research Collaborator</p>
+          <p class="tcard-role">Department of Mechanical Engineering, IIT Madras</p>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">In years of working in the automotive space, I have rarely seen someone with Karthikeyan's grasp of engine calibration. He speaks the language of engines fluently and delivers results that hold up well beyond the project scope.</p>
+      <div class="tcard-author">
+        <div class="tcard-av">V</div>
+        <div>
+          <p class="tcard-name">Industry Partner</p>
+          <p class="tcard-role">Senior Engineer, Automotive R&amp;D</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══════════════════════════════════════ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-bg-word">CONNECT</div>
+  <p class="sec-label">Let's Work Together</p>
+  <h2 class="sec-title">READY TO ENGINEER<br>SOMETHING GREAT?</h2>
+  <p class="sec-body">Whether you have a calibration challenge, a research project, or a consulting requirement, let's talk about what's possible.</p>
+  <div class="cta-btns">
+    <a href="https://calendly.com/mailtoraja69/30min" target="_blank" class="btn-red">Book a 30-Min Call &#8594;</a>
+    <a href="mailto:karthi3seng@gmail.com" class="btn-ghost">Send an Email</a>
+  </div>
+  <div class="cta-contacts">
+    <a href="https://calendly.com/mailtoraja69/30min" target="_blank" class="cta-contact">
+      <div class="cc-box">&#128197;</div>
+      <span class="cc-lbl">Book via Calendly</span>
+    </a>
+    <a href="https://www.linkedin.com/in/karthikeyana-01a326128" target="_blank" class="cta-contact">
+      <div class="cc-box">&#128188;</div>
+      <span class="cc-lbl">LinkedIn Profile</span>
+    </a>
+    <a href="mailto:karthi3seng@gmail.com" class="cta-contact">
+      <div class="cc-box">&#9993;&#65039;</div>
+      <span class="cc-lbl">karthi3seng@gmail.com</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════ -->
+<footer>
+  <p class="ft-l">&copy; 2026 Karthikeyan A &mdash; All rights reserved.</p>
+  <a href="https://parvathsolutions.com/" target="_blank" class="ft-r">Founder, Parvath Solutions &#8599;</a>
+</footer>
+
+<!-- ══ SCRIPTS ══════════════════════════════════ -->
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.13 });
+  document.querySelectorAll('.reveal, .stagger').forEach(el => revealObs.observe(el));
+
+  // Counter animation
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const totalTime = 1600;
+      const steps = Math.min(target, 60);
+      const interval = totalTime / steps;
+      const increment = target / steps;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current) + suffix;
+        }
+      }, interval);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+</script>
+</body>
+</html>
